@@ -29,7 +29,7 @@ public class GitHubMinerService {
     private final String BASE_URL = "https://api.github.com/repos/";
     public Integer _commits = 2;
     public Integer _issues = 20;
-    public Integer _maxPages = 20;
+    public Integer _maxPages = 2;
 
     public Project findProject(String ownerId, String projectId, Optional<Integer> sinceCommits, Optional<Integer> sinceIssues, Optional<Integer> maxPages) {
 
@@ -48,13 +48,13 @@ public class GitHubMinerService {
 
         if (project != null) {
             project.setCommits(getCommits(ownerId, projectId));
-            project.setIssues(getIssue(ownerId, projectId));
+            project.setIssues(getIssues(ownerId, projectId));
 
         }
         return project;
     }
 
-    private List<Issue> getIssue(String ownerId, String projectId) {
+    private List<Issue> getIssues(String ownerId, String projectId) {
 
         String url = BASE_URL + ownerId + "/" + projectId + "/" + "issues";
 

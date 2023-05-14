@@ -19,9 +19,9 @@ class GitHubMinerApplicationTests {
 
 	@Test
 	void shouldFindTheProject() {
-//		Project project = githubService.findProject("ignaciosige", "PRY-EJ02-ajedrez", Optional.of(2), Optional.of(20), Optional.of(20));
-//		assertTrue(project != null, "The list of commits is empty!!!");
-//		System.out.println(project);
+		Project project = githubService.findProject("ignaciosige", "PRY-EJ02-ajedrez", Optional.of(2), Optional.of(20), Optional.of(2));
+		assertTrue(project != null, "Could not find the project");
+		System.out.println(project);
 	}
 
 }

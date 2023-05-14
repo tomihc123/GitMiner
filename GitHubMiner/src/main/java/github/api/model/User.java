@@ -19,7 +19,6 @@ public class User {
     private String id;
 
     @JsonSetter("login")
-    @NotEmpty(message = "The username cannot be empty")
     private void setUsername(String username) {
         this.username = username;
         this.name = username;
