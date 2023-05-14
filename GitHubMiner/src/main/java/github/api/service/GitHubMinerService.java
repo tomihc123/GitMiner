@@ -36,11 +36,9 @@ public class GitHubMinerService {
         String url = BASE_URL + ownerId + "/" + projectId;
         //Project project = _template.getForObject(url, Project.class);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer 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");
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-        ResponseEntity<Project> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null, headers), Project.class);
+        ResponseEntity<Project> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null), Project.class);
 
         sinceCommits.ifPresent(value -> _commits = value);
         sinceIssues.ifPresent(value -> _issues = value);
@@ -60,13 +58,9 @@ public class GitHubMinerService {
 
         String url = BASE_URL + ownerId + "/" + projectId + "/" + "issues";
 
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer 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");
-
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
         if (_issues != 0) builder.queryParam("since", Utils.getDateSince(_issues));
-        ResponseEntity<IssueAux[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null, headers), IssueAux[].class);
+        ResponseEntity<IssueAux[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null), IssueAux[].class);
 
 
         List<IssueAux> res = new ArrayList<>();
@@ -75,7 +69,7 @@ public class GitHubMinerService {
                 for (int i = 0; i < _maxPages; i++) {
                     String pageNext = Utils.getNextPageUrl(response.getHeaders());
                     if (pageNext != null) {
-                        response = _template.exchange(pageNext, HttpMethod.GET, new HttpEntity<>(null, headers), IssueAux[].class);
+                        response = _template.exchange(pageNext, HttpMethod.GET, new HttpEntity<>(null), IssueAux[].class);
                         if (response.getBody() != null) {
                             res.addAll(Arrays.stream(response.getBody()).toList());
                         }
@@ -117,12 +111,9 @@ public class GitHubMinerService {
     private List<Commit> getCommits(String ownerId, String projectId) {
         String url = BASE_URL + ownerId + "/" + projectId + "/" + "commits";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer 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");
-
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
         if (_commits != 0) builder.queryParam("since", Utils.getDateSince(_commits));
-        ResponseEntity<CommitParentAux[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null, headers), CommitParentAux[].class);
+        ResponseEntity<CommitParentAux[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null), CommitParentAux[].class);
 
         List<CommitParentAux> res = new ArrayList<>();
         if (response.getBody() != null) {
@@ -130,7 +121,7 @@ public class GitHubMinerService {
                 for (int i = 0; i < _maxPages; i++) {
                     String pageNext = Utils.getNextPageUrl(response.getHeaders());
                     if (pageNext != null) {
-                        response = _template.exchange(pageNext, HttpMethod.GET, new HttpEntity<>(null, headers), CommitParentAux[].class);
+                        response = _template.exchange(pageNext, HttpMethod.GET, new HttpEntity<>(null), CommitParentAux[].class);
                         if (response.getBody() != null) {
                             res.addAll(Arrays.stream(response.getBody()).toList());
                         }
@@ -150,11 +141,9 @@ public class GitHubMinerService {
 
     public List<Comment> getComments(String url) {
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer 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");
         List<Comment> res = new ArrayList<>();
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-        ResponseEntity<Comment[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null, headers), Comment[].class);
+        ResponseEntity<Comment[]> response = _template.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(null), Comment[].class);
         if (response.getBody() != null) {
             res.addAll(Arrays.stream(response.getBody()).toList());
         }
