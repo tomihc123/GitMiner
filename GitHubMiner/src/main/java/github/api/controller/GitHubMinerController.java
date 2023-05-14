@@ -1,9 +1,10 @@
-package gitlab.api.controller;
+package github.api.controller;
 
-import gitlab.api.model.Project;
-import gitlab.api.repository.GitHubMinerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import github.api.model.Project;
+import github.api.service.GitHubMinerService;
 
 import java.util.Optional;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 public class GitHubMinerController {
 
     @Autowired
-    GitHubMinerRepository repository;
+    GitHubMinerService repository;
 
     @GetMapping("/{ownerId}/{projectId}")
     public Project findProject(@PathVariable String ownerId, @PathVariable String projectId, @RequestParam(value = "sinceCommits") Optional<Integer> sinceCommits, @RequestParam("sinceIssues") Optional<Integer> sinceIssues, @RequestParam("maxPages") Optional<Integer> maxPages) {

@@ -1,4 +1,4 @@
-package gitlab.api.model;
+package github.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

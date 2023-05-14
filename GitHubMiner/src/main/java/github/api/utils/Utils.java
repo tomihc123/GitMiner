@@ -1,8 +1,9 @@
-package gitlab.api.utils;
+package github.api.utils;
 
-import gitlab.api.model.Commit;
-import gitlab.api.model.CommitParentAux;
 import org.springframework.http.HttpHeaders;
+
+import github.api.model.Commit;
+import github.api.model.CommitParentAux;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

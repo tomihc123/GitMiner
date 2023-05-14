@@ -1,18 +1,23 @@
-package gitminer.repository;
+package gitminer.service;
 
 import gitminer.model.Comment;
 import gitminer.model.Commit;
 import gitminer.model.Issue;
 import gitminer.model.Project;
+import gitminer.repository.CommentDatabase;
+import gitminer.repository.CommitDatabase;
+import gitminer.repository.IssueDatabase;
+import gitminer.repository.ProjectDatabase;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class GitMinerRepository {
+@Service
+public class GitMinerService {
 
     @Autowired
     RestTemplate _template;

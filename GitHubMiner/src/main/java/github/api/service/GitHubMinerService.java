@@ -1,16 +1,18 @@
-package gitlab.api.repository;
+package github.api.service;
 
 
-import gitlab.api.model.*;
-import gitlab.api.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import github.api.model.*;
+import github.api.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +20,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Repository
-public class GitHubMinerRepository {
+@Service
+public class GitHubMinerService {
 
     @Autowired
     RestTemplate _template;

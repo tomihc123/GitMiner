@@ -4,7 +4,8 @@ import gitminer.model.Comment;
 import gitminer.model.Commit;
 import gitminer.model.Issue;
 import gitminer.model.Project;
-import gitminer.repository.GitMinerRepository;
+import gitminer.service.GitMinerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/gitminer")
 public class GitMinerController {
     @Autowired
-    GitMinerRepository repository;
+    GitMinerService repository;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/projects")

@@ -1,4 +1,4 @@
-package gitlab.api.repository;
+package gitlab.api.service;
 
 import gitlab.api.model.Commit;
 import gitlab.api.model.Issue;
@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -17,8 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class GitLabMinerRepository {
+@Service
+public class GitLabMinerService {
 
     @Autowired  //Con esta etiqueta es spring la que instancia esto al iniciar
     RestTemplate _template;
@@ -26,7 +27,7 @@ public class GitLabMinerRepository {
     private final String BASE_URL = "https://gitlab.com/api/v4/projects/";
     public Integer _commits = 2;
     public Integer _issues = 20;
-    public Integer _maxPages = 20;
+    public Integer _maxPages = 2;
 
     public Project findProject(String projectUri, Optional<Integer> sinceCommits, Optional<Integer> sinceIssues, Optional<Integer> maxPages) {
 
@@ -39,14 +40,14 @@ public class GitLabMinerRepository {
 
         if (project != null) {
             project.setCommits(getCommits(projectUri));
-            project.setIssues(getIssue(projectUri));
+            project.setIssues(getIssues(projectUri));
         }
 
         return project;
 
     }
 
-    private List<Issue> getIssue(String project) {
+    private List<Issue> getIssues(String project) {
 
         String url = BASE_URL + project + "/issues";
 

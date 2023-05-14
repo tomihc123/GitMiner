@@ -1,24 +1,25 @@
-package gitlab.api;
+package github.api;
 
-import gitlab.api.model.Project;
-import gitlab.api.repository.GitHubMinerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import github.api.model.Project;
+import github.api.service.GitHubMinerService;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class GitLabMinerApplicationTests {
+class GitHubMinerApplicationTests {
 
 	@Autowired
-    GitHubMinerRepository gitlabService;
+    GitHubMinerService githubService;
 
 	@Test
-	void findProject() {
-		Project project = gitlabService.findProject("4207231", "dksn", Optional.of(2), Optional.of(20), Optional.of(20));
+	void shouldFindTheProject() {
+		Project project = githubService.findProject("ignaciosige", "PRY-EJ02-ajedrez", Optional.of(2), Optional.of(20), Optional.of(20));
 		assertTrue(project != null, "The list of commits is empty!!!");
 		System.out.println(project);
 	}
