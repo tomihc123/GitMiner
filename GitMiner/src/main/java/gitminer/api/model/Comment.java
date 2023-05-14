@@ -1,10 +1,9 @@
 
-package gitminer.model;
+package gitminer.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Comment")

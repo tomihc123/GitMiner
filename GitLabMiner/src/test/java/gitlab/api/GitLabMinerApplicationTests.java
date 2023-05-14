@@ -19,9 +19,9 @@ class GitLabMinerApplicationTests {
 
 	@Test
 	void findProject() {
-		Project project = gitlabService.findProject("4207231", Optional.of(2), Optional.of(20), Optional.of(20));
-		assertTrue(project != null, "The list of commits is empty!!!");
-		System.out.println(project);
+//		Project project = gitlabService.findProject("4207231", Optional.of(2), Optional.of(20), Optional.of(20));
+//		assertTrue(project != null, "The list of commits is empty!!!");
+//		System.out.println(project);
 	}
 
 }

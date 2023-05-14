@@ -1,5 +1,5 @@
 
-package gitminer.model;
+package gitminer.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

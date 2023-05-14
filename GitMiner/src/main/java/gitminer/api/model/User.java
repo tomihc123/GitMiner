@@ -1,5 +1,5 @@
 
-package gitminer.model;
+package gitminer.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "GMUser")     // Watch out: User is a reserved keyword in H2
